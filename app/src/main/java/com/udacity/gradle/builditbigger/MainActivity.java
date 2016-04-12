@@ -40,7 +40,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+        JokeSmith jokeSmith = new JokeSmith();
+        Toast.makeText(this, jokeSmith.getJoke(), Toast.LENGTH_SHORT).show();
     }
 
 
