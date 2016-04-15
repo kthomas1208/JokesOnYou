@@ -43,6 +43,4 @@ public class MainActivity extends ActionBarActivity {
         JokeSmith jokeSmith = new JokeSmith();
         Toast.makeText(this, jokeSmith.getJoke(), Toast.LENGTH_SHORT).show();
     }
-
-
 }
