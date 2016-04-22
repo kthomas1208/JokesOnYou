@@ -23,7 +23,10 @@ import com.udacity.gradle.builditbigger.JokeSmith;
 )
 public class MyEndpoint {
 
-    /** A simple endpoint method that takes a name and says Hi back */
+    /**
+     * When executed, retrieves a joke from a Java class and returns it to calling client
+     * @return JokeBean object that contains the joke
+     */
     @ApiMethod(name = "sayJoke")
     public JokeBean sayJoke() {
         JokeBean response = new JokeBean();

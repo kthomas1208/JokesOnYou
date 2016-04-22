@@ -39,6 +39,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
+        // Launch Async Task to retrieve joke from server
         new EndpointsAsyncTask().execute(this);
     }
 }

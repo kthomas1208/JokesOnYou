@@ -14,7 +14,7 @@ import com.udacity.jokedisplay.JokeActivity;
 import java.io.IOException;
 
 /**
- * Created by kevinthomas on 4/20/16.
+ * Async Task to retrieve joke from a server and launch an activity with the joke.
  */
 public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     private static MyApi myApiService = null;
