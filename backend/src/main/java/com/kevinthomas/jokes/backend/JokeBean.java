@@ -1,15 +1,15 @@
 package com.kevinthomas.jokes.backend;
 
 /** The object model for the data we are sending through endpoints */
-public class MyBean {
+public class JokeBean {
 
-    private String myData;
+    private String joke;
 
     public String getData() {
-        return myData;
+        return joke;
     }
 
     public void setData(String data) {
-        myData = data;
+        joke = data;
     }
 }
