@@ -1,28 +1,27 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.util.Pair;
-import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.kevinthomas.jokes.backend.myApi.MyApi;
+import com.udacity.jokedisplay.JokeActivity;
 
 import java.io.IOException;
 
 /**
  * Created by kevinthomas on 4/20/16.
  */
-public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
 
     @Override
-    protected String doInBackground(Pair<Context, String>... params) {
+    protected String doInBackground(Context... params) {
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -41,11 +40,10 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
             myApiService = builder.build();
         }
 
-        context = params[0].first;
-        String name = params[0].second;
+        context = params[0];
 
         try {
-            return myApiService.sayHi(name).execute().getData();
+            return myApiService.sayJoke().execute().getData();
         } catch (IOException e) {
             return e.getMessage();
         }
@@ -53,9 +51,9 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
 
     @Override
     protected void onPostExecute(String result) {
-
-        // todo Launch Joke Display Activity
-        Log.v("LOG_MESSAGE", "ENTERED onPostExecute");
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        // Launch Joke Display Activity with joke from GCE
+        Intent intent = new Intent(context, JokeActivity.class);
+        intent.putExtra(JokeActivity.JOKE_KEY, result);
+        context.startActivity(intent);
     }
 }

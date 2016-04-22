@@ -9,8 +9,7 @@ package com.kevinthomas.jokes.backend;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-
-import javax.inject.Named;
+import com.udacity.gradle.builditbigger.JokeSmith;
 
 /** An endpoint class we are exposing */
 @Api(
@@ -25,12 +24,13 @@ import javax.inject.Named;
 public class MyEndpoint {
 
     /** A simple endpoint method that takes a name and says Hi back */
-    @ApiMethod(name = "sayHi")
-    public JokeBean sayHi(@Named("name") String name) {
+    @ApiMethod(name = "sayJoke")
+    public JokeBean sayJoke() {
         JokeBean response = new JokeBean();
+        JokeSmith joke = new JokeSmith();
 
-        // todo Get joke from Java library and send it to app
-        response.setData("Hi, " + name);
+        //Get joke from Java library and send it to app
+        response.setData(joke.getJoke());
 
         return response;
     }
