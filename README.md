@@ -1,6 +1,8 @@
-# Gradle for Android and Java Final Project
+# Jokes On You App
 
-This project is an app with multiple flavors that uses
+## Gradle for Android and Java Final Project
+
+This project is part of the Udacity Android Developer Nanodegree course. It is an app with multiple flavors that uses
 multiple libraries and Google Could Endpoints. The app consists
 of four modules. A Java library that provides jokes, a Google Could Endpoints
 (GCE) project that serves those jokes, an Android Library containing an
