@@ -10,6 +10,7 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
     }
     buildTypes {
         release {
@@ -31,10 +32,14 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    // Added for AdMob
+    compile project(path: ':backend', configuration: 'android-endpoints')
     compile project(':jokelib')
     compile project(':jokedisplay')
-    compile 'com.google.android.gms:play-services:8.4.0'
-    compile project(path: ':backend', configuration: 'android-endpoints')
+
+    // Added for AdMob
+    freeCompile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+
+    androidTestCompile 'junit:junit:4.12'
+    androidTestCompile "org.mockito:mockito-core:1.+"
 }
